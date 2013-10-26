@@ -1,9 +1,17 @@
-import database
 import bcrypt
 
 def hash_password(password):
 	hash = password.encode('utf-8')
 	return bcrypt.hashpw(hash, bcrypt.gensalt())
+
+def verify_password(password, hashed_password):
+	hash = password.encode('utf-8')
+	if bcrypt.hashpw(hash, hashed_password) == hash_password(password):
+		return True
+	else:
+		return False
+
+
 
 def validateEmail(email):
 	if email.find("@") == -1:
@@ -32,9 +40,19 @@ def register(email, name, password, university, d):
 	else:
 		return False
 
-def login(email, password, d):
+def loginValid(email, password, d):
+
+
+	user = d.query("SELECT * FROM users WHERE email=?", [email])
+	print user
+
+	if not user:
+		return False
 
 	hashed_password = hash_password(password)
 
-
+	if verify_password(password, hashed_password):
+		return True
+	else:
+		return False
 
