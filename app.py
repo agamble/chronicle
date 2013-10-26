@@ -16,8 +16,10 @@ def index():
 def group_page(university=None, short_group=None):
 	return university
 
+
+
 @app.route('/<university>/register', methods=['GET', 'POST'])
-def uni_register():
+def uni_register(university=None):
 	d = DatabaseManager()
 
 	if request.method == "POST":
