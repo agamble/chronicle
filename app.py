@@ -16,7 +16,9 @@ def index():
 def group_page(university=None, short_group=None):
 	return university
 
-
+@app.route('/login')
+def login:
+	return
 
 @app.route('/<university>/register', methods=['GET', 'POST'])
 def uni_register(university=None):
@@ -24,7 +26,10 @@ def uni_register(university=None):
 
 	if request.method == "POST":
 		username, password = request.form['username'], request.form['password']
-		register(email, password, password, d)
+		row_id = register(email, password, password, d)
+		if row_id:
+			return render_template('register.html', success=True)
+
 	if request.method == "GET":
 		return render_template('register.html')
 
