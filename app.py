@@ -1,6 +1,6 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from database import DatabaseManager
-import register
+from usermanagement import *
 
 
 app = Flask(__name__)
@@ -17,18 +17,20 @@ def group_page(university=None, short_group=None):
 	return university
 
 @app.route('/login')
-def login:
+def login():
 	return
 
 @app.route('/<university>/register', methods=['GET', 'POST'])
 def uni_register(university=None):
+
 	d = DatabaseManager()
 
 	if request.method == "POST":
-		username, password = request.form['username'], request.form['password']
-		row_id = register(email, password, password, d)
+		email, password, name = request.form['email'], request.form['password'], request.form['name']
+		
+		row_id = register(email, name, password, university, d)
 		if row_id:
-			return render_template('register.html', success=True)
+			return render_template('register.html')
 
 	if request.method == "GET":
 		return render_template('register.html')
