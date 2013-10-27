@@ -1,0 +1,32 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<form method='POST' class='uploadform'>
+	<div class="title">
+		<label for='title'>Title</label>
+		<input type="text" name='title'>
+	</div>
+
+	<textarea class="note_entry" name='note_entry'>
+
+
+	</textarea>
+	<div class="fileUpload">
+		
+		<label for="pdf">Related File</label>
+		<input type="file" name='pdf'>
+
+	</div>
+	<button action='submit'>Upload this Note</button>
+</form>
+
+<script type="text/javascript">	
+	
+	CKEDITOR.replace( 'note_entry', {
+    	toolbar: 'Basic'
+	});
+
+</script>
+
+{% endblock %}

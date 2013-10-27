@@ -6,18 +6,28 @@ def hash_password(password):
 
 def verify_password(password, hashed_password):
 	hash = password.encode('utf-8')
-	if bcrypt.hashpw(hash, hashed_password) == hash_password(password):
+	hash2 = hashed_password.encode('utf-8')
+	if bcrypt.hashpw(hash, hash2) == hash2:
 		return True
 	else:
 		return False
 
-
+def get_user_data(request):
+	user_dict = {}
+	request.cookies.get('name')
 
 def validateEmail(email):
 	if email.find("@") == -1:
 		return False
 	else:
 		return True
+
+def verifyLoggedIn(request):
+	if request.cookies.get('name'):
+		return request.cookies.get('name')
+	else:
+		return False
+
 
 def register(email, name, password, university, d):
 	hashed_password = hash_password(password)
@@ -51,8 +61,8 @@ def loginValid(email, password, d):
 
 	hashed_password = user[0][3]
 
-
 	if verify_password(password, hashed_password):
+
 		return user[0][2]
 	else:
 		return False

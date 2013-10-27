@@ -1,0 +1,25 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<table class="eventFileTable">
+  <thead>
+    <tr>
+      <th># </th>
+      <th>File Description</th>
+      <th>Author</th>
+      <th>Upload Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for revision in files_list %}
+    <tr>
+      <td>1</td>
+      <td>{{revision.description}}</td>
+      <td>{{revision.userid}} </td>
+      <td>{{revision.date}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

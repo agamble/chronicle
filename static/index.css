@@ -4,10 +4,14 @@
 	color: white !important;
 }
 
+
+
 .username {
 	color: white;
-	font-family: sans-serif;
-	font-size: 20pt;
+	font-family: Whitney, sans-serif;
+	font-size: 12pt;
+	margin-top: 15px;
+	float: right;
 }
 
 .sign-in-form {
@@ -53,3 +57,64 @@ td {
 	height: 120px;
 	width: 120px;
 }
+
+.cke_top {
+	background: white !important;
+}
+
+label {
+}
+
+.page-header {
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 40px;
+	margin-top: 80px;
+}
+
+.urlinputbox {
+	position: absolute;
+	width: 400px;
+	background-color: white;
+	padding: 50px;
+	display: none;
+	
+}
+
+.eventFileTable {
+	width: 80%;
+}
+
+.uploadform {
+	width: 80%;
+	margin: 0 auto;
+	padding: 50px;
+	margin-top: 0px;
+}
+
+.note_entry {
+	height: 800px;
+}
+
+form .title {
+	padding: 50px;
+	display: inline-block;
+}
+form .title input {
+	width: 200px;
+	height: 25pt;
+
+}
+
+.title label {
+	padding-right: 20px;
+	font-size: 20pt;
+	margin-top: 30px;
+}
+
+.fileUpload {
+	padding: 50px;
+}
+
+.uploadform button {
+text-align: center}

@@ -1,6 +1,11 @@
 {% extends "header.html" %}
 
 {% block content %}
+
+<!-- generate a calendar if the user is logged in -->
+
+{% if name %}
+
 {% autoescape false %}
 
 <div class="calendar">
@@ -8,5 +13,87 @@
 </div>
 
 {% endautoescape %}
+
+{% endif %}
+
+{% if not name %}
+
+  <div class="container">
+    <div id="this-carousel-id" class="carousel slide bg-image">
+      <div class="carousel-inner">
+        <div class="item active row-fluid">
+          <div style="span12"><img src="{{ url_for('static', filename="portico.jpeg" ) }}" alt="Portico" /></div>
+          <div class="carousel-caption">
+            <a href="#"><button type="button" class="btn btn-primary">Join Us!</button></a>
+            <p>Collaborative learning - University done better</p>
+          </div>
+        </div>
+        <div class="item">
+          <img src="{{ url_for('static', filename="Alexander.jpg" ) }}" alt="Portico" height="468px;" />
+          <div class="carousel-caption">
+            <a href="#">
+                <button type="button" class="btn btn-primary">
+                    Join Us!
+                </button>
+            </a>
+            <p>Collaborative learning - University done better</p>
+          </div>
+        </div>
+        <div class="item">
+          <img src="{{ url_for('static', filename="woohoo.jpg" ) }} " alt="Galaxy NGC5866"  height="468px;"/>
+          <div class="carousel-caption">
+            <a href="#"><button type="button" class="btn btn-primary">Join Us!</button></a>
+            <p>Collaborative learning - University done better</p>
+          </div>
+        </div>
+        <div class="item">
+         <img src="{{ url_for('static', filename="doughnuts.jpg" ) }}" alt="Galaxy NGC5866"  height="468px;"/>
+         <div class="carousel-caption">
+          <a href="#"><button type="button" class="btn btn-primary" style="margin:auto;">Join Us!</button></a>
+          <a href="#"><button type="button" class="btn btn-primary" style="margin:auto;">Join Us!</button></a>
+          <p>Collaborative learning - University done better</p>
+        </div>
+      </div>
+    </div><!-- .carousel-inner -->
+      <!--  next and previous controls here
+      href values must reference the id for this carousel -->
+      <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+    </div><!-- .carousel -->
+    <!-- end carousel -->
+
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="span4">
+       <img src="{{ url_for('static', filename="DerpUI.jpg" ) }}" alt="Image" class="img-circle">
+       <h2>What we do</h2>
+       <p> We are an online platform for people to share and develop information. The original use case was for students to find any lecture and collectively upload and develop a set of lecture notes. This way we can study better, and have more time to do what we love! </p>
+       <p><a class="btn" href="#">View details &raquo;</a></p>
+     </div>
+     <div class="span4">
+      <img src="{{ url_for('static', filename="Rubbish.jpg" ) }}" alt="Image" class="img-circle">
+      <h2>How it works</h2>
+      <p><ul><li>Create an account on our platform</li><li>Paste in your UCL Calendar URL</li><li>View and add to the notes for any lecture!</li></p>
+      <p><a class="btn" href="#">More Information</a></p>
+    </div>
+    <div class="span4">
+      <img src="{{ url_for('static', filename="WallShotStand.jpg" )}}" alt="Image" class="img-circle">
+      <h2>The Project</h2>
+      <p>The Team, #G10, are bored of the old school, bureaucratic educational system, and we know we can get smart. This platform is just the beginning, and we hope the ethos of initiative to develop the system carries forward!</p>
+      <p><a class="btn" href="#">Meet the team</a></p>
+    </div>
+  </div>
+
+  <hr>
+
+</div> <!-- /container -->
+{% endif %}
+
+<script type="text/javascript">
+
+
+</script>
+
+
 
 {% endblock %}
