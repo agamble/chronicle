@@ -6,6 +6,8 @@ from datetime import date
 import os
 from requestCalendar import importICStoDatabase
 from getDatabase import *
+import json
+
 cal = calendar.HTMLCalendar(0)
 universities = [
 				'ucl',
@@ -69,6 +71,7 @@ def index():
 		groups_array = getUserGroups(name, d)
 		print groups_array
 		events = allUserEventsforCalendar(groups_array, d)
+		print events
 		return render_template('index.html', cal=this_month_cal, name=name, events=events)
 	else:
 		return render_template('index.html')

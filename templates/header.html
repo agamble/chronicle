@@ -90,7 +90,43 @@
       })
     })
 
-    var events = {{events}};
+    var events = [
+    {% for event in events %}
+    ["{{event[0]}}","{{event[1]}}"],
+    {% endfor %}
+
+    ];
+
+    var test_array = []
+
+    for (var x = 0; x < events.length; x++) {
+       var year = events[x][1].split("-")[0]
+       var month = events[x][1].split("-")[1]
+       var day = events[x][1].split("-")[2]
+       if (month==10) {
+        if ( $('td' + " ." + events[x][0].split(" ")[0] + day) ){
+           $('td.' + day).append("<div class="+ events[x][0].split(" ")[0] + day + " >" + events[x][0] + "</div>")
+
+        }
+       }
+
+    }
+
+    for (var x = 1; x < 32; x++) {
+      var seen = {};
+        $('td div').each(function() {
+        var txt = $(this).text();
+         if (seen[txt]) {
+           $(this).remove();
+
+         }
+        else {
+          seen[txt] = true;
+
+        }
+      });
+    }
+
     console.log(events)
     
 

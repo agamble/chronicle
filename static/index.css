@@ -118,3 +118,15 @@ form .title input {
 
 .uploadform button {
 text-align: center}
+
+.img-circle {
+	width: 100%;
+}
+
+.span4 {
+	width: 20%;
+}
+
+.row {
+	display: inline-block;
+}

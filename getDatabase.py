@@ -25,23 +25,26 @@ def getUserID(name, d):
 	return d.query("SELECT * FROM users WHERE name=?", [name])[0][0]
 
 def getUserGroups(userid, d):
-	all_my_groups =	d.query("SELECT * FROM enrolment WHERE userid LIKE ?", [userid])
+	all_my_groups =	d.query("SELECT * FROM enrolment", None)
 	groups_array = []
 	print all_my_groups
 	for enrolment in all_my_groups:
-		groups_array.append(enrolment[1])
+		groups_array.append(enrolment[2])
 	return groups_array
 
 def allUserEventsforCalendar(groups_array, d):
 	event_array = []
 	for group in groups_array:
-		my_events = d.query("SELECT * FROM events WHERE groupid=?", [group])
+		my_events = d.query("SELECT * FROM events WHERE groupid = ?", [group])
 		for event in my_events:
 			event_array.append(event)
 	print len(event_array)
+	new_event_array = []
 	for event in event_array:
 		date = event[2]
 		name = event[4]
+		new_event_array.append([name, date])
+	return new_event_array
 
 def getFileList(eventid, d):
 	return d.query("SELECT * FROM files where eventid=?", [eventid])
