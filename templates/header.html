@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+  <title>Starter Template for Bootstrap</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+  <link href='http://fonts.googleapis.com/css?family=Lora:700' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      </button>
+      <a class="navbar-brand" href="#">Chronicle</a>
+    </div>
+    {% if not username %}
+    <div class="collapse navbar-collapse">
+
+      <form class="form-inline sign-in-form" role="form" method='post' action='/login'>
+        <div class="form-group">
+          <label class="sr-only" for="exampleInputEmail2">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email" name='email'>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="exampleInputPassword2" name='password'>Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Sign in</button>
+      </form>
+    </div><!--/.nav-collapse -->
+    {% endif %}
+   
+    {% if username %}
+     <div class='username'> {{username}}</div>
+    {% endif %}
+  </div>
+</div>
+
+{% block content %}
+{% endblock %}
+
+
+
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
+        <script>
+  
+  $( document ).ready(function() {
+
+    $('.calendar td').each(function(){
+      var day = $(this).html()
+      $(this).addClass(day)
+    })
+
+});
+  </script>
+    </body>
+    </html>

@@ -49,10 +49,11 @@ def loginValid(email, password, d):
 	if not user:
 		return False
 
-	hashed_password = hash_password(password)
+	hashed_password = user[0][3]
+
 
 	if verify_password(password, hashed_password):
-		return True
+		return user[0][2]
 	else:
 		return False
 
